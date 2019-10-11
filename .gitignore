@@ -1,0 +1,6 @@
+config/*.json
+!config/example_auth.json
+config/propel.yml
+generated-conf/*
+src/bot.php
+vendor

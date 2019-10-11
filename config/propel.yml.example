@@ -1,0 +1,15 @@
+propel:
+    database:
+        connections:
+            default:
+                adapter: mysql
+                dsn: mysql:host=localhost;port=3306;dbname= #add dbname
+                user: #add user
+                password: #add pw
+                settings:
+                  charset: utf8mb4
+                  queries:
+                    utf8: "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci, COLLATION_CONNECTION = utf8mb4_unicode_ci, COLLATION_DATABASE = utf8mb4_unicode_ci, COLLATION_SERVER = utf8mb4_unicode_ci"
+    generator:
+        schema:
+            autoPackage: true

@@ -1,0 +1,29 @@
+{
+    "name": "silentgecko/guildbot",
+    "description": "Guildbot to manage MMORPG Guilds",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/donkkill13/DiscordPHP"
+        }
+    ],
+    "require": {
+        "asimlqt/php-google-spreadsheet-client": "3.0.*",
+        "google/apiclient": "^2.0",
+        "propel/propel": "^2.0@dev",
+        "team-reflex/discord-php": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "René Welbers",
+            "email": "info@wereco.de"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "": "src/",
+            "GuildBot": "src/"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" namespace="\GuildBot\Model">
+  <table name="guild" idMethod="native" phpName="Guild" namespace="\GuildBot\Model">
+    <column name="id" phpName="Id" type="BIGINT" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="sheet_id" phpName="SheetId" type="VARCHAR" size="255" />
+    <column name="work_sheet_title" phpName="WorkSheetTitle" type="VARCHAR" size="255" />
+    <column name="admin_roles" phpName="AdminRoles" type="ARRAY"/>
+    <column name="member_roles" phpName="MemberRoles" type="ARRAY"/>
+    <column name="channels" phpName="Channels" type="ARRAY"/>
+    <column name="active" phpName="Active" type="BOOLEAN" size="1" required="true" default="1"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="announcement" idMethod="native" phpName="Announcement" namespace="\GuildBot\Model">
+    <column name="id" phpName="Id" type="BIGINT" primaryKey="true" required="true" autoIncrement="true" />
+    <column name="message" phpName="Message" type="VARCHAR" size="255" required="true"/>
+    <column name="guild_id" phpName="GuildId" type="BIGINT" required="false"/>
+    <foreign-key foreignTable="guild" name="guild_id" phpName="Guild" refPhpName="Announcement" defaultJoin="Criteria::LEFT_JOIN" required="false" onDelete="setnull" onUpdate="setnull"  default="NULL">
+      <reference foreign="id" local="guild_id"/>
+    </foreign-key>
+    <column name="created_at" phpName="CreatedAt" type="TIMESTAMP"/>
+    <column name="broadcasted_at" phpName="BroadcastedAt" type="TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="sheet_config" idMethod="native" phpName="SheetConfig" namespace="\GuildBot\Model">
+    <column name="id" phpName="Id" type="BIGINT" primaryKey="true" required="true" autoIncrement="true" />
+    <column name="field" phpName="Field" type="VARCHAR" size="255" required="true"/>
+    <column name="field_type" phpName="Type" type="VARCHAR" size="10" required="false" default="string"/>
+    <column name="default_value" phpName="DefaultValue" type="VARCHAR" size="255" required="false" default="NULL"/>
+    <column name="field_column" phpName="Column" type="VARCHAR" size="3" required="false" default="A"/>
+    <column name="guild_id" phpName="GuildId" type="BIGINT" required="true"/>
+    <foreign-key foreignTable="guild" name="guild_id_sheet" phpName="Guild" refPhpName="SheetConfig" defaultJoin="Criteria::LEFT_JOIN" required="true" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference foreign="id" local="guild_id"/>
+    </foreign-key>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+</database>
