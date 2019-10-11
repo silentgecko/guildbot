@@ -2,5 +2,6 @@ config/*.json
 !config/example_auth.json
 config/propel.yml
 generated-conf/*
+!generated-conf/.gitkeep
 src/bot.php
 vendor
